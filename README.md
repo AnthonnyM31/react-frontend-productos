@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# ⚛️ Frontend React: Consumo de API y Proxy de Desarrollo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img src="[https://img.shields.io/badge/React-2024-61DAFB?logo=react&logoColor=white](https://img.shields.io/badge/React-2024-61DAFB?logo=react&logoColor=white)" alt="React"/>
+  <img src="[https://img.shields.io/badge/NPM-Proxy-red](https://img.shields.io/badge/NPM-Proxy-red)" alt="NPM Proxy"/>
+</p>
 
-## Available Scripts
+## 🎯 Objetivo
 
-In the project directory, you can run:
+Este repositorio contiene la capa de presentación mínima construida con React, diseñada para comunicarse con la API REST del backend (`api-cache-proxy-arquitectura`) y visualizar el funcionamiento del sistema de productos.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🔗 Estrategia de Comunicación
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Para facilitar el desarrollo y evitar conflictos de CORS (Cross-Origin Resource Sharing) entre el frontend (`:3000`) y el backend (`:8080`):
 
-### `npm test`
+* **Proxy de Desarrollo (`package.json`):**
+    El archivo `package.json` está configurado con `"proxy": "http://localhost:8080"`. Esto permite que el componente `App.js` llame a `/api/products` directamente, mientras el servidor de desarrollo de React se encarga de redirigir silenciosamente la solicitud al puerto del backend.
+* **CORS Global en Backend:** El backend también tiene una configuración CORS global (`WebConfig.java`) para asegurar la compatibilidad en otros entornos.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ▶️ Guía de Inicio Rápido
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Requisitos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Node.js (LTS) y npm
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Pasos
 
-### `npm run eject`
+1.  **Asegurar Backend:** Confirme que el servidor Spring Boot esté **ejecutándose** en `http://localhost:8080`.
+2.  Navegue a la carpeta raíz de este proyecto (`react-frontend-productos`).
+3.  Instale las dependencias (si es necesario):
+    ```bash
+    npm install
+    ```
+4.  Ejecute la aplicación:
+    ```bash
+    npm start
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+La aplicación se abrirá automáticamente en `http://localhost:3000` y mostrará la lista de productos obtenida de la API.
